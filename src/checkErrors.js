@@ -1,4 +1,4 @@
-{
+const errors = {
   "1001": "Неверный логин или пароль",
   "1002": "На выполнение данного запроса отсутствуют права (привилегии)",
   "2001": "Запрошенный проект не существует",
@@ -98,4 +98,19 @@
   "0103": "Ошибка обновления",
   "0104": "Доступ к данным запрещен",
   "0105": "Нет права на редактирование объекта"
+}
+
+const STATUS_OK = 'ok'
+
+module.exports = function (res) {
+  if (res.$.status !== STATUS_OK) {
+    const err = new Error()
+    err.message = 'Planfix error: ' + res.message
+    err.code = res.code
+    err.statusCode = 400
+    err.description = errors[res.code]
+    throw err
+  }
+
+  return res
 }

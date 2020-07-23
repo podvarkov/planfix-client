@@ -1,9 +1,9 @@
 ## Инициализация
 
 ```js
-var Planfix = require('index');
+const Planfix = require('planfix-apiv2');
 
-var client = new Planfix({
+const client = new Planfix({
 	account: 'your_account_name',
 	privateKey: 'your_private_key',
 	apiKey: 'your_api_key'

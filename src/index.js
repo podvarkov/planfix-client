@@ -1,17 +1,16 @@
-var _ = require('lodash')
-var debug = require('debug')('planfix-api')
-var Promise = require('bluebird')
-var request = Promise.promisify(require('request'))
-var xml2js = Promise.promisifyAll(require('xml2js'))
-var js2xmlparser = require('js2xmlparser')
-var assert = require('assert')
-var md5 = require('md5')
-var checkErrors = require('./checkErrors')
+const _ = require('lodash')
+const debug = require('debug')('planfix-api')
+const Promise = require('bluebird')
+const request = Promise.promisify(require('request'))
+const xml2js = Promise.promisifyAll(require('xml2js'))
+const js2xmlparser = require('js2xmlparser')
+const assert = require('assert')
+const md5 = require('md5')
+const checkErrors = require('./checkErrors')
 
-var BASE_URL = 'https://api.planfix.ru/xml/'
-var STATUS_OK = 'ok'
+let BASE_URL = 'https://api.planfix.ru/xml/'
 
-var methods = [
+const methods = [
   //auth
   'auth.login',
   //project
@@ -110,9 +109,9 @@ module.exports = function createApiClient(opts) {
   assert(opts.account, 'account param is required')
 
   BASE_URL = opts.url || BASE_URL
-  var sid = null
+  let sid = null
 
-  var client = {}
+  const client = {}
   methods.forEach(function (methodName) {
     _.set(client, methodName, createMethod(methodName))
   })
@@ -121,7 +120,7 @@ module.exports = function createApiClient(opts) {
     return function apiMethod(params) {
       params = _.extend({ account: opts.account }, params)
 
-      var requestObject = _.extend({
+      const requestObject = _.extend({
         '@': { method: methodName },
       }, params)
 
@@ -132,7 +131,7 @@ module.exports = function createApiClient(opts) {
 
       requestObject.signature = sign(methodName, params, opts.privateKey)
 
-      var xmlRequest = js2xmlparser('request', requestObject)
+      const xmlRequest = js2xmlparser('request', requestObject)
       debug('xml request', xmlRequest)
 
       return request({
@@ -163,8 +162,8 @@ function sign(methodName, params, key) {
 }
 
 function implodeElements(obj) {
-  var result = ''
-  var keys = Object.keys(obj)
+  let result = ''
+  const keys = Object.keys(obj)
   keys.sort()
 
   keys.forEach(function (key) {
