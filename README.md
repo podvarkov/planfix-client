@@ -38,12 +38,17 @@ client.auth.login({
 ## Пример использования
 
 ```js
+// Авторизация по логину и паролю
 client.auth
   .login({
     login: 'John',
     password: 'Galt'
   })
   .then(() => client.user.getList({ pageCurrent: 1, pageSize: 100 }))
+  .then(res => console.log(res.users.user))
+
+// Авторизация по токену
+client.user.getList({ pageCurrent: 1, pageSize: 100 })
   .then(res => console.log(res.users.user))
 ```
 
