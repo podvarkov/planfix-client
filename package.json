@@ -1,15 +1,24 @@
 {
-  "name": "planfix-apiv2",
+  "name": "planfix-client",
   "version": "1.0.0",
   "description": "Planfix api client",
   "main": "src/index.js",
-  "types": "types",
+  "typings": "src/types/index.d.ts",
+  "files": [
+    "src"
+  ],
   "scripts": {
+    "deploy": "sh deploy.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Maksim Podvarkov<i.snova.bebeb@gmail.com>",
   "license": "MIT",
-  "keywords": ["planfix", "planfix-api", "planfix-client", "planfix-xmljs"],
+  "keywords": [
+    "planfix",
+    "planfix-api",
+    "planfix-client",
+    "planfix-xmljs"
+  ],
   "dependencies": {
     "bluebird": "^3.4.6",
     "debug": "^2.2.0",

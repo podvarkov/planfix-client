@@ -16,7 +16,7 @@ const methods = [
   //project
   'project.add',
   'project.update',
-  'project.get ',
+  'project.get',
   'project.getList',
   //projectGroup
   'projectGroup.add',
