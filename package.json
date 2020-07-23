@@ -13,6 +13,11 @@
   },
   "author": "Maksim Podvarkov<i.snova.bebeb@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/podvarkov/planfix-client"
+  },
+  "homepage": "https://github.com/podvarkov/planfix-client",
   "keywords": [
     "planfix",
     "planfix-api",
