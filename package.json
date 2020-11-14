@@ -1,6 +1,6 @@
 {
   "name": "planfix-client",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Planfix api client",
   "main": "src/index.js",
   "typings": "src/types/index.d.ts",
