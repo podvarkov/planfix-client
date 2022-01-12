@@ -163,6 +163,10 @@ function sign(methodName, params, key) {
 
 function implodeElements(obj) {
   let result = ''
+  if (typeof obj === 'string') {
+    result += obj
+    return result
+  }
   const keys = Object.keys(obj)
   keys.sort()
 
